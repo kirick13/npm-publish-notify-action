@@ -1,0 +1,37 @@
+name: 'Telegram'
+description: 'Sends a message to Telegram.'
+inputs:
+  token:
+    description: 'Bot token'
+    required: true
+  chat_id:
+    description: 'Chat ID.'
+    required: true
+  text:
+    description: 'Message text.'
+    required: true
+  parse_mode:
+    description: 'Text formatting mode.'
+    required: false
+    default: 'markdown'
+runs:
+  using: "composite"
+  steps:
+    - name: Set Greeting
+      run: |
+        BODY=$(jq \
+          --null-input \
+          --arg chat_id "$CHAT_ID" \
+          --arg text "$TEXT" \
+          --arg parse_mode "$PARSE_MODE" \
+          '{"chat_id":$chat_id,"text":$text,"parse_mode":$parse_mode,"link_preview_options":{"is_disabled":true}}')
+        curl -X POST \
+          -H 'Content-Type: application/json' \
+          -d "$BODY" \
+          https://api.telegram.org/bot$TOKEN/sendMessage
+      shell: bash
+      env:
+        TOKEN: ${{ inputs.token }}
+        CHAT_ID: ${{ inputs.chat_id }}
+        TEXT: ${{ inputs.text }}
+        PARSE_MODE: ${{ inputs.parse_mode }}
