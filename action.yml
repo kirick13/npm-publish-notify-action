@@ -1,11 +1,11 @@
 name: 'Telegram'
 description: 'Sends a message to Telegram.'
 inputs:
-  bot_token:
-    description: 'Bot token'
+  telegram-bot-token:
+    description: 'Telegram: Bot token.'
     required: true
-  chat_id:
-    description: 'Chat ID.'
+  telegram-chat-id:
+    description: 'Telegram: Chat ID to send message to.'
     required: true
 runs:
   using: "composite"
@@ -32,5 +32,5 @@ runs:
           https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage
       shell: bash
       env:
-        TELEGRAM_BOT_TOKEN: ${{ inputs.bot_token }}
-        TELEGRAM_CHAT_ID: ${{ inputs.chat_id }}
+        TELEGRAM_BOT_TOKEN: ${{ inputs.telegram-bot-token }}
+        TELEGRAM_CHAT_ID: ${{ inputs.telegram-chat-id }}
