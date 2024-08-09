@@ -10,7 +10,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Set Greeting
+    - name: Send message to Telegram
       run: |
         PACKAGE_NAME=$(jq -r .name package.json)
         PACKAGE_VERSION=$(jq -r .version package.json)
