@@ -1,5 +1,5 @@
-name: 'Telegram'
-description: 'Sends a message to Telegram.'
+name: 'kirick13/notify-action'
+description: 'Notifies about Node.js package releases using Telegram.'
 inputs:
   telegram-bot-token:
     description: 'Telegram: Bot token.'
