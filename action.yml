@@ -1,4 +1,4 @@
-name: 'kirick13/notify-action'
+name: 'kirick13/npm-publish-notify-action'
 description: 'Notifies about Node.js package releases using Telegram.'
 inputs:
   telegram-bot-token:
@@ -25,7 +25,7 @@ runs:
           --arg chat_id "$TELEGRAM_CHAT_ID" \
           --arg text "$TEXT" \
           '{"chat_id":$chat_id,"text":$text,"parse_mode":"html","link_preview_options":{"is_disabled":true}}')
-        echo "$BODY"
+        # echo "$BODY"
         curl -X POST \
           -H 'Content-Type: application/json' \
           -d "$BODY" \
