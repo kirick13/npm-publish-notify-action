@@ -18,7 +18,7 @@ runs:
         📦 Updated package <b><a href="https://www.npmjs.com/package/$PACKAGE_NAME">$PACKAGE_NAME</a></b>
         New version: <code>${PACKAGE_VERSION}</code>
 
-        https://www.npmjs.com/package/$PACKAGE_NAME/v/$PACKAGE_VERSION
+        https://npmx.dev/package/$PACKAGE_NAME/v/$PACKAGE_VERSION
         EOF)
         BODY=$(jq \
           --null-input \
